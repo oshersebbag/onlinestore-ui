@@ -1,0 +1,17 @@
+.whatNow{
+    margin: 80px 15px;
+    display: flex;
+    flex-direction: row;
+
+}
+
+.categoryPoducts{
+    width: 100px;
+    height: 50px;
+    margin: 5px;
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #4bbd3c;
+    background-color: lighten( #4bbd3c, 10% );
+    color: white;
+}
