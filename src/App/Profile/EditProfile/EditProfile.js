@@ -2,7 +2,7 @@ import React from 'react';
 import "./EditProfile.scss";
 import UserService from '../../../services/user.service';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faEnvelope, faBirthdayCake,faUnlock, faUserEdit, faArrowCircleLeft } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faEnvelope, faBirthdayCake,faUnlock, faUserEdit, faArrowCircleLeft, faAddress } from '@fortawesome/free-solid-svg-icons';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import User from '../../../models/User';
 import  { Link }  from "react-router-dom";

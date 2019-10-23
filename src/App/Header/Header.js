@@ -2,8 +2,16 @@ import React from 'react';
 import './Header.scss';
 import  { Link }  from "react-router-dom";
 import CartButton from './CartButton/CartButton';
+import cookie from 'react-cookies';
 
 class Header extends React.Component {
+    constructor(props){
+        super(props);
+    }
+    logout(){
+        cookie.remove('user');
+    }
+    
     render(){
         return (
             <div>
@@ -18,7 +26,7 @@ class Header extends React.Component {
                             <li><Link to="/cart">  cart <CartButton/> </Link></li>
                         </ul>
                     </nav>
-
+                    <button onClick={this.logout.bind(this)}>Logout</button>
                 </div>
 
             </div>

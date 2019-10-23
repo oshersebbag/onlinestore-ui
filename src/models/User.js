@@ -34,11 +34,5 @@ export default yup.object().shape({
                 age--;
             } 
             return age<100;        
-        }),
-        // consent: yup.bool()
-        // .test(
-        //   'consent',
-        //   'You have to agree with our Terms and Conditions',
-        //   value => value === true
-        // )
+        })
 });

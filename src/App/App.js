@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.scss';
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Register from './Register/Register';
 import Header from './Header/Header';
 import Login from './Login/Login';
@@ -11,6 +11,8 @@ import EditProfile from './Profile/EditProfile/EditProfile';
 import Category from './Category/Category';
 import Product from './Category/Product/Product';
 import Cart from './Cart/Cart';
+import Admin from './Admin/Admin';
+import NoMatch from './NoMatch/NoMatch';
 
 function App() {
   return (
@@ -18,6 +20,7 @@ function App() {
 
     <div className="App">
       <Header/>
+      <Switch>
       <Route path ="/" exact component={Homepage} />
       <Route path ="/register"  component={Register} />
       <Route path ="/login"  component={Login} />
@@ -26,6 +29,9 @@ function App() {
       <Route path = "/category/:id" exact component={Category} />
       <Route path = "/category/:categoryId/product/:productId" component={Product} />
       <Route path = "/cart" component={Cart} />
+      <Route component={NoMatch} />
+      <Route path = "/admin" component={Admin} />
+      </Switch>
       <Footer />
     </div>
     </Router>

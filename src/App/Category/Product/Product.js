@@ -1,8 +1,8 @@
 import React from 'react';
 import './Product.scss';
-import {Link} from "react-router-dom";
 import ProductService from '../../../services/product.service';
-import CartService from '../../../services/cart.service';
+import {connect} from 'react-redux';
+import {addToCart} from '../../redux/actions';
 
 class Product extends React.Component {
     constructor(props){
@@ -20,13 +20,13 @@ class Product extends React.Component {
     }
 
     addToCart(){
-        CartService
-        .add(this.state.product._id, 1)
+        this.props.addToCart(this.state.product._id);
     }
 
     render(){
         return (
             <div className="product-page-container">
+                <img src={'http://localhost:4000/products/'+this.state.product.image} />
                 {this.state.product.name}
                 {this.state.product.price}
                 <br/>
@@ -38,4 +38,6 @@ class Product extends React.Component {
     }
 }
 
-export default Product;
+export default connect(null, {
+    addToCart
+})(Product);

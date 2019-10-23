@@ -3,16 +3,15 @@ import { faCartArrowDown } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
 import './CartButton.scss';
 import cartService from '../../../services/cart.service';
+import {connect} from 'react-redux';
 
 class CartButton extends React.Component {
-    getNumberOfItems(){
-        return cartService.getAll().length;
-    }
+
     render(){
         return (
             <div>
-                <FontAwesomeIcon icon={faCartArrowDown}/> <span class="badge badge-primary">
-                    {this.getNumberOfItems()}
+                <FontAwesomeIcon icon={faCartArrowDown}/><span className="badge badge-primary">
+                    {this.props.itemCount}
                 </span>
 
             </div>
@@ -20,4 +19,9 @@ class CartButton extends React.Component {
     }
 }
 
-export default CartButton;
+const mapStateToProps = (state) => {
+    return {
+        itemCount: state.cartItemsCount
+    }
+};
+export default connect(mapStateToProps)(CartButton);
