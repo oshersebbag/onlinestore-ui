@@ -2,6 +2,7 @@ import React from 'react';
 import './Categories.scss';
 import CategoryService from '../../../services/category.service';
 import  { Link }  from "react-router-dom";
+import env from '../../environment';
 
 class Categories extends React.Component {
     constructor(props){
@@ -20,22 +21,15 @@ class Categories extends React.Component {
     }
     render(){
         return (
-            <div>
-                <div className="home-sub-title">
-                <hr/>
-                <p className="mySubTitle" ><b>welcome to MyStore!</b> the place where you can buy all the stuff you really need</p>
-                <hr/>
-                </div>
-                <div className="home-container">
+                <div className="categories-container">
                 {this.state.categories.map((category, index) => {
-                    var mypath="/images/categories/"+category.name+".gif"
-        return <Link className="myCategory" key={index} to={'/category/' + category.id}>
+        return <Link className="myCategory " key={index} to={'/category/' + category.id}>
         <div className="categoryTitle"><h3>{category.name}</h3></div>
-        <div className="categoryImage"> <img  alt={category.name} src={mypath}/></div>
+        <div className="categoryImage"> <img  alt={category.name} src={env.url + '/categories/'+category.image}/></div>
     </ Link>
 })}
                 </div>
-                </div>
+                
 
         )
     }

@@ -13,23 +13,35 @@ class Products extends React.Component {
     }
 
     componentDidMount(){
+        this.load();
+    }
+
+    load(){
         ProductService
         .getAll()
         .then( res => res.json())
         .then(products => this.setState({products}));
     }
 
+    removeProduct(id){
+        var confirmDelete = window.confirm("Are you sure you want to delete this item?");
+        if(confirmDelete === true){
+
+        ProductService
+        .remove(id)
+        .then(() => this.load());
+        }
+    }
+
     render(){
         return (
             <div>
-                <h2> Products </h2>
-                <div className="d-flex justify-content-end mb-3">
-                    <Link className="btn btn-primary" to="/admin/products/create">Create new product</Link>
-                </div>
-                <table className="table table-striped">
+                <h2 className="admin-title">  Products </h2>
+
+                <table className="table table-hover admin-table">
                     <thead>
                         <tr>
-                            <th></th>
+                            <th><Link className="btn btn-outline-dark" to="/admin/products/create"> new </Link></th>
                             <th>ID</th>
                             <th>Title</th>
                             <th>Brand</th>
@@ -41,12 +53,15 @@ class Products extends React.Component {
                     <tbody>
                         {this.state.products.map((product, index) => {
                             return <tr key={index} >
-                                <td><img className="product-image" src={'http://localhost:4000/products/'+product.image} /></td>
+                                <td><img className="product-image" alt="product"  src={'http://localhost:4000/products/'+product.image} /></td>
                                 <td>{product._id.substring(product._id.length -6)}</td>
                                 <td>{product.name}</td>
                                 <td>{product.brand}</td>
                                 <td>{product.price.toFixed(2)}</td>
-                                <td></td>
+                                <td><Link className="btn btn-primary" to={`/admin/products/edit/${product._id}`}>Edit</Link>
+                                &nbsp;&nbsp;
+                                <button className="btn btn-danger" onClick={this.removeProduct.bind(this,product._id)}>X</button>
+                                </td>
                             </tr>
                         })}
 

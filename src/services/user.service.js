@@ -1,4 +1,6 @@
 import Network from './network.service';
+import cookie from 'react-cookies';
+
 
 class UserServices extends Network {
     register(user){
@@ -12,7 +14,24 @@ class UserServices extends Network {
     }
     update(user,id){
         return this.send('POST', '/user/'+id, user);
+    }
 
+    isLogged(){
+        const myUser = cookie.load('user');
+        if (myUser){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    getAll(){
+        return this.send('GET','/user');
+    }
+
+    admin(){
+        return this.send('POST','/user/admin');
     }
 }
 

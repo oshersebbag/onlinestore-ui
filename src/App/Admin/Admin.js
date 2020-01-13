@@ -1,25 +1,24 @@
 import React from 'react';
 import "./Admin.scss";
-import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Products from './Products/Products';
 import Users from './Users/Users';
 import Categories from './Categories/Categories';
 import UserService from '../../services/user.service';
 import CreateProduct from './Products/CreateProduct/CreateProduct';
+import EditProduct from './Products/EditProduct/EditProduct';
+import CreateCategory from './Categories/CreateCategory/CreateCategory';
+import EditCategory from './Categories/EditCategory/EditCategory';
 
 
 class Admin extends React.Component {
-    constructor(props){
-        super(props);
-        
-    }
     componentDidMount(){
         UserService
         .me()
         .then(response => response.json())
         .then(user => {
             if(! user.isAdmin){
+                alert("nice try, you're not an Admin");
                 this.props.history.push('/');
             }
 
@@ -28,28 +27,37 @@ class Admin extends React.Component {
     render(){
         return (
             <Router>
-            <div className="container admin-container"> 
+            <div className="admin-container"> 
             <div>
                 <div className="row">
                     <div className="col-sm-3">
                         <ul className="list-group">
                             <li className="list-group-item">
-                                <Link to="/admin/products">Products</Link>
+                                <Link className="admin-link" to="/admin/products">Products</Link>
                             </li>
                             <li className="list-group-item">
-                                <Link to="/admin/Categories">Categories</Link>
+                                <Link className="admin-link" to="/admin/Categories">Categories</Link>
                             </li>
                             <li className="list-group-item">
-                                <Link to="/admin/Users">Users</Link>
+                                <Link className="admin-link" to="/admin/Users">Users</Link>
                             </li>
                         </ul>
                     </div>
                     <div className="col-sm-9">
+                        
                         <Route path="/admin/products" exact component={Products} />
                         <Route path="/admin/products/create" component={CreateProduct} />
+                        <Route path = "/admin/products/edit/:productId" component={EditProduct} />
+
+
+                        <Route path="/admin/categories" exact component={Categories} />
+                        <Route path="/admin/categories/create" component={CreateCategory} />
+                        <Route path = "/admin/categories/edit/:categoryId" component={EditCategory} />
+
+
 
                         <Route path="/admin/users" component={Users} />
-                        <Route path="/admin/categories" component={Categories} />
+
 
                     </div>
                 </div>

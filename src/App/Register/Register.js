@@ -16,26 +16,33 @@ class Register extends React.Component {
         this.setState({submitting: true});
         UserService
         .register(values)
-        .then( () => {
-            this.setState({submitting: false});
-            this.props.history.push('/login/');
+        .then(response => response.json())
+        .then(response => {
+            console.log(response);
+            if(response === "exist"){
+                alert("this email is already in use");
+                this.setState({submitting: false});
+            }
+            else if(response.firstName){
+                this.setState({submitting: false});
+                this.props.history.push('/login/');
+            }
+            else {
+                alert("there seems to be a server issue, try refilling your form");
+                this.setState({submitting: false});
+            }
         });
     }
    
     render(){
         return (
-            <div>
 <div className="register-container">
 			<div className="register-inner">
 				<Formik initialValues={{firstName: '', lastName:'', email: '',password:'', rePassword:'', }}
                 validationSchema={User}
                 onSubmit={this.send.bind(this)}>
                     <Form>
-					<h3>Sign Up</h3>
-                    <hr />
-                    <h2>please fill-in the form below</h2>
-                    <hr />
-
+					<h3>Register</h3>
 					<div className="form-g">
 						<div className="form-wrapper">
 							<label>First Name</label>
@@ -74,12 +81,12 @@ class Register extends React.Component {
 						</label>
 					</div>
                     <ErrorMessage className="alert alert-success" name="consent" component="div" />
-					<Field type="submit" className="register-btn" disabled={this.state.submitting} value={this.state.submitting ? 'Here we go...' : "Register Now"} />
+					<button type="submit" className="register-btn" disabled={this.state.submitting}> {this.state.submitting ? 'Here we go...' : "Register Now"} </button>
                     </Form>
                 </Formik>
 			</div>
 		</div>
-        </div>
+
         )
     }
 }

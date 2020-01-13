@@ -1,11 +1,142 @@
+@import url('https://fonts.googleapis.com/css?family=Cabin&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Ubuntu&display=swap');
+
+
+.product-page-container{
+    background: rgb(247, 247, 247);
+    padding: 15px 15px 100px 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .btn-add-to-cart{
     color: white;
     background: darkgreen;
     border-radius: 4px;
     font-size: 22;
+
+
+
+    margin-bottom: 20px;
+    transition-property: all;
+    transition-duration: .3s;
+    transition-timing-function: ease;
+    width: 100%;
+    height: 60px;
+    text-align: center;
+    background: rgb(36, 121, 62);
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 900;
+    &:hover{
+        color: #fff;
+        background: rgb(18, 170, 64);
+    }
 }
 
-.product-page-container{
-    margin:100px 20px 20px 20px;
+.product-top{
+    display: flex;
+    justify-content: space-between;
+    width: 85%;
+}
+.product-right{
+    width: 40vw;
+    border-radius: 15PX;
+    border: 20px solid white;
+    background-color: #fff;
     
+}
+.product-left{
+    margin-right: 10px;
+    width: calc(100% - 43vw);
+}
+
+.product-page-title {
+    font-family: 'Cabin', sans-serif;
+    margin: 10px 0px 5px 0px; 
+    font-weight: 900;
+}
+
+.product-page-brand{
+    color: #AAA;
+    font-style: italic;
+}
+
+.product-page-price{
+    margin-top: 10px;
+    color: rgb(194, 100, 100);
+    font-weight: 600;
+}
+
+.product-description{
+    width: 85%;
+    
+}
+.random-products{
+    margin-top: 20px;
+    display: flex;
+    width: 85%;
+    justify-content: space-between;
+}
+
+.random-link{
+    width: 30%;
+    text-decoration: none;
+    font-weight: 500;
+    color: rgb(6, 102, 11);
+    &:hover{
+        color: rgb(214, 104, 104);
+    }
+
+    
+}
+
+.random-pic
+{
+    border: 10px solid white;
+}
+
+
+
+.random-pic-container {
+    position: relative;
+  }
+  
+  
+  .random-overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .5s ease;
+    background: linear-gradient(to right,rgba(214, 104, 104,0.8),rgba(247, 162, 162, 0.8));
+}
+  
+  .random-pic-container:hover .random-overlay {
+    opacity: 1;
+  }
+
+  
+  .random-text {
+    font-family: 'Ubuntu', sans-serif;
+    color: white;
+    font-size: 40px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+
+.random-title
+{
+    margin-top: 40px;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 600;
+    color: rgb(214, 104, 104);
 }

@@ -1,41 +1,58 @@
 
 .login {
-	min-height: 80vh;
-    background-image: url('/images/bg-registration-form-2.jpg');
-	background-size: cover;
-	background-repeat: no-repeat;
+	background: rgb(247, 247, 247);
 	display: flex;
 	justify-content: center;
 	align-content: center;
-	padding-top: 70px;
+	padding-bottom: 60px;    /* Footer height */
+
 }
 .login-container {
+	margin: 0px 15px 25px 15px;
 	width: 100%;
 	display: flex;
 	align-items: center;
+	border-radius: 10px;
 	padding-top: 60px;
 	padding-bottom: 80px;
-	background-image: url('/images/bg-sign.jpg');
+	background-image: linear-gradient(
+        to bottom,
+		rgba(91, 226, 125, 0),
+		rgba(247, 247, 247, 0.2),
+		rgb(247, 247, 247),
+        rgb(247, 247, 247)),url('/images/bg-sign.jpg');
 	background-size: cover;
 	background-attachment: fixed;
 	background-position: center top;   
-	background-color: rgb(135, 207, 121);
+	background-color: rgb(111, 201, 163);
 
 	.login-inner{
 		animation: fade-in 0.5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 		margin: auto;
-		width: 400px;
+		width: 40%;
 		border-radius: 20px;
 		background-color: rgb(245, 245, 245);
 		padding: 20px;
-		box-shadow: 0px 0px 46px 5px rgb(58, 94, 92);
+		box-shadow: 0px 0px 20px 5px rgba(102, 173, 170, 0.3);
 		}
 }
 
+.login-title{
+	text-transform: uppercase;
+	font-weight: 900;
+	font-size: 22px;
+	text-align: center;
+	margin-bottom: 16px;
+	color: #777;
+	letter-spacing: 2px;
+	padding: 10px 0px;
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+}
 
 .login-btn {
 	height: 40px;
-	width: 152px;
+	width: 100%;
 	margin: auto;
 	margin-top: 29px;
 	cursor: pointer;
@@ -45,7 +62,7 @@
 	color:#fff;
 	text-transform: uppercase;
 	text-decoration: none;
-	background: #4bbd3c;
+	background: #70af68;
 	border-radius: 20px;
 	border: none;
 	transition: all 0.4s ease 0s;

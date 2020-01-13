@@ -44,7 +44,7 @@ class Profile extends React.Component {
 
           formatBday(){
               let myBday = new Date(this.state.profile.bday);
-              let day=myBday.getDate(),month=myBday.getMonth(), year=myBday.getFullYear();
+              let day=myBday.getDate(),month=myBday.getMonth()+1, year=myBday.getFullYear();
               return ""+day+"/"+month+"/"+year;
           }
     

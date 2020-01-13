@@ -1,13 +1,10 @@
 $base-color: rgb(13, 179, 7);
 
 .EditProfile {
-min-height: 100vh;
-background-image: url('/images/bg-registration-form-2.jpg');
-background-size: cover;
-background-repeat: no-repeat;
+background: rgb(247, 247, 247);
 display: flex;
 justify-content: center;
-padding-top: 120px;
+padding-bottom: 60px;    /* Footer height */
 
 }
 
@@ -17,8 +14,9 @@ padding-top: 120px;
     height: 100%;
     z-index: 1;
     border: #fff 2px solid;
-    border-radius: 20px;
 	box-shadow: 0px 0px 46px 5px rgba(158, 255, 198, 0.438);
+	margin-bottom: 50px;
+
 }
 
  
@@ -29,8 +27,6 @@ padding-top: 120px;
     background-image: url('/images/bg-sign.jpg');
     background-size: cover;
 	background-repeat: no-repeat;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -78,8 +74,8 @@ padding-top: 120px;
     .myField{
 		height: 35px;
 		width: 100%;
-		color: #666;
-		background: rgba(255, 255, 255, 0.6);
+		color: #222;
+		background: rgb(255, 255, 255);
 		border: none;
         border-radius: 20px;
         font-size: 15px;
@@ -92,6 +88,9 @@ padding-top: 120px;
 			border: 1px solid #37ad68;
 			box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px rgba(104, 155, 102, 0.103);
 		}
+		&:disabled {
+			background: rgb(247, 247, 247);
+		}
 	}
 	
 }
@@ -103,8 +102,8 @@ padding-top: 120px;
 .myNameField{
 	height: 35px;
 	width: calc(50% - 5px);
-	color: #666;
-	background: rgba(255, 255, 255, 0.6);
+	color: #222;
+	background: rgb(255, 255, 255);
 	border: none;
 	border-radius: 20px;
 	font-size: 15px;
@@ -141,13 +140,10 @@ padding-top: 120px;
 	text-transform: uppercase;
 	border-radius: 20px;
 	overflow: hidden;
-	-webkit-transform: perspective(1px) translateZ(0);
 	transform: perspective(1px) translateZ(0);
 	box-shadow: 0 0 1px rgba(0, 0, 0, 0);
 	position: relative;
-	-webkit-transition-property: color;
 	transition-property: color;
-	-webkit-transition-duration: 0.5s;
 	transition-duration: 0.5s;
 	&:before {
 		content: "";
@@ -158,23 +154,16 @@ padding-top: 120px;
 		right: 0;
 		bottom: 0;
 		background: #ffd000;
-		-webkit-transform: scaleX(0);
 		transform: scaleX(0);
-		-webkit-transform-origin: 0 50%;
 		transform-origin: 0 50%;
-		-webkit-transition-property: transform;
 		transition-property: transform;
-		-webkit-transition-duration: 0.5s;
 		transition-duration: 0.5s;
-		-webkit-transition-timing-function: ease-out;
 		transition-timing-function: ease-out;
 	}
 	&:hover {
 		color: #333;
 		&:before {
-			-webkit-transform: scaleX(1);
 			transform: scaleX(1);
-			-webkit-transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
 			transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
 		}
 	}

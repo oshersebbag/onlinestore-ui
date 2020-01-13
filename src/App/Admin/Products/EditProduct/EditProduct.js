@@ -1,52 +1,70 @@
 import React from 'react';
+import "./EditProduct.scss";
+import ProductService from '../../../../services/product.service';
+import CategoryService from '../../../../services/category.service';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import Product from '../../../../models/Product';
-import CategoryService from '../../../../services/category.service';
-import ProductService from '../../../../services/product.service'
 
 
 
-class CreateProduct extends React.Component {
+class EditProduct extends React.Component {
     constructor(props){
         super(props);
-        this.image=React.createRef();
         this.state = {
+            product:{},
             categories: [],
-            submitting: false
-        }
-        
+            changeImage: false,
+            submitting:false
+        };
     }
     componentDidMount(){
+        ProductService
+        .getById(this.props.match.params.productId)
+        .then(res => res.json())
+        .then(product => this.setState({product}));
+
         CategoryService
         .getAll()
         .then(response => response.json())
         .then(categories => {
             this.setState({categories});
         });
+
+        
+
     }
-    send(values) {
+
+    toggleShow() {
+        this.setState({ changeImage: !this.state.changeImage });
+      }
+
+    send(values){
+
         this.setState({submitting: true});
-        ProductService.create(values)
-            .then(() => {
-                this.setState({submitting: false});
-                this.props.history.push('/admin/products')
-            });
+        values.changeImage = this.state.changeImage;
+        ProductService
+        .update(values, this.props.match.params.productId)
+        .then( () => {
+            this.setState({submitting: false});
+            this.props.history.push('/admin/products');
+        });
     }
+
 
     render(){
         return (
             <div className="inner-admin">
 
             <Formik initialValues={{
-                name: "",
-                model:"",
-                brand: "",
-                short:"",
-                description:"", 
-                price: "",
-                categoryId: "",
-                image: ""
-            }}
+                name: this.state.product.name,
+                model: this.state.product.model,
+                brand: this.state.product.brand, 
+                short: this.state.product.short,
+                description: this.state.product.description,
+                price: this.state.product.price,
+                categoryId: this.state.product.categoryId,
+                image: this.state.product.image
+                 }}
             validationSchema={Product}
             onSubmit={this.send.bind(this)}
             enableReinitialize
@@ -94,22 +112,29 @@ class CreateProduct extends React.Component {
                 </Field>
             <ErrorMessage className="alert alert-success" name="categoryId" component="div" />
         </div>
-        <div className="form-group">
-            <label>image:</label><br/>
+
+            {this.state.changeImage ?     
+            <div className="form-group">  
+                  <label>image:</label><br/>
             <input type="file" name="image" onChange={(event) =>{
                 setFieldValue('image', event.currentTarget.files[0]);
             }}/>
             <ErrorMessage className="alert alert-success" name="image" component="div" />
-        </div>
-
-            <button type="submit" className="" disabled={this.state.submitting}>Create new product</button>
+            </div>
+          :
+          <button className="btn btn-success" onClick={this.toggleShow.bind(this)}> change image </button>
+          }
+          <br/>
+          <br />
+        <button type="submit" className="btn btn-primary" disabled={this.state.submitting}>Update product</button>
 
     </ Form >;
     }}>
     </ Formik>
-</div>
+    </div>
+
         )
     }
 }
 
-export default CreateProduct;
+export default EditProduct;

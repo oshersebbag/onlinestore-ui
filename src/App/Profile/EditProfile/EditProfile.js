@@ -2,7 +2,7 @@ import React from 'react';
 import "./EditProfile.scss";
 import UserService from '../../../services/user.service';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faEnvelope, faBirthdayCake,faUnlock, faUserEdit, faArrowCircleLeft, faAddress } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faEnvelope, faBirthdayCake,faUnlock, faUserEdit, faArrowCircleLeft } from '@fortawesome/free-solid-svg-icons';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import User from '../../../models/User';
 import  { Link }  from "react-router-dom";
@@ -22,6 +22,7 @@ class EditProfile extends React.Component {
         .then(response => response.json())
         .then(user => {
             this.setState({profile: user});
+
                 });
     }
 
@@ -39,7 +40,9 @@ class EditProfile extends React.Component {
             return "";
         }
         let myBday = new Date(this.state.profile.bday);
-        let day=myBday.getDate(),month=myBday.getMonth(), year=myBday.getFullYear();
+
+        let day=myBday.getDate(),month=myBday.getMonth()+1, year=myBday.getFullYear();
+
         let myDateString = year+"-"+month+"-"+day;
 
         if (day<10){
@@ -58,7 +61,6 @@ class EditProfile extends React.Component {
 
 
     render(){
-        console.log(this.formatBday());
         return (
             <Formik initialValues={{
                 firstName: this.state.profile.firstName,
@@ -99,7 +101,7 @@ class EditProfile extends React.Component {
                     <div className="EditProfile-tab">
                                 <div className="myIcon"> <FontAwesomeIcon className="icon" icon={faEnvelope}/> Email </div>
                                 <div className="myInfo">
-                                <Field type="text" className="myField" name="email"  />
+                                <Field type="text" className="myField" name="email" disabled  />
                                 </div>
                     </div>
                     <ErrorMessage className="alert alert-success" name="email" component="div" />

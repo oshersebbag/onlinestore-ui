@@ -20,6 +20,7 @@ function App() {
 
     <div className="App">
       <Header/>
+      <div className="page-container">
       <Switch>
       <Route path ="/" exact component={Homepage} />
       <Route path ="/register"  component={Register} />
@@ -29,10 +30,11 @@ function App() {
       <Route path = "/category/:id" exact component={Category} />
       <Route path = "/category/:categoryId/product/:productId" component={Product} />
       <Route path = "/cart" component={Cart} />
-      <Route component={NoMatch} />
       <Route path = "/admin" component={Admin} />
+      <Route component={NoMatch} />
       </Switch>
       <Footer />
+      </div>
     </div>
     </Router>
 

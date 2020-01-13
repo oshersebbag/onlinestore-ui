@@ -4,6 +4,9 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import Log from '../../models/Login';
 import userService from '../../services/user.service';
 import cookie from 'react-cookies';
+import {connect} from 'react-redux';
+import {Logged} from '../redux/actions';
+
 
 
 class Login extends React.Component {
@@ -20,13 +23,20 @@ class Login extends React.Component {
         .login(values.email, values.password)
         .then(response => response.json())
         .then(response => {
-            console.log(response);
-            const twoWeeksTime = 60 * 60 * 24 * 14;
-            cookie.save('user', response.token, {path:'/', maxAge: twoWeeksTime});
-            this.setState({submitting: false});
-            this.props.history.push('/');
-                });
-                }
+            if (response.token){
+                const twoWeeksTime = 60 * 60 * 24 * 14;
+                cookie.save('user', response.token, {path:'/', maxAge: twoWeeksTime});
+                this.setState({submitting: false});
+                this.props.Logged();
+                this.props.history.push('/');
+            }
+            else
+            {
+                alert("email or password are not correct");
+                this.setState({submitting: false});
+            }      
+            })};
+
     render(){
         return (
             <div className="login">
@@ -36,8 +46,8 @@ class Login extends React.Component {
                 validationSchema={Log}
                 onSubmit={this.send.bind(this)}>
                     <Form>
-					<h3>Sign In</h3>
-                    <hr />
+					<h3 className="login-title">Login</h3>
+
 					<div className="form-wrapper">
 						<label>Email</label>
                         <Field type="text" className="form-control" name="email" required />
@@ -58,4 +68,8 @@ class Login extends React.Component {
     }
 }
 
-export default Login;
+
+
+export default connect(null, {
+    Logged
+})(Login);
