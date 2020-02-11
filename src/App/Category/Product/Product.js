@@ -6,7 +6,7 @@ import {addToCart} from '../../redux/actions';
 import{Link} from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearchPlus } from '@fortawesome/free-solid-svg-icons';
-
+import env from "../../environment";
 
 
 class Product extends React.Component {
@@ -76,7 +76,7 @@ class Product extends React.Component {
             <div className="product-page-container">
                 <div className="product-top">
                 <div className="product-right">
-                <img className="product-right" alt="product" src={'http://localhost:4000/products/'+this.state.product.image} />
+                <img className="product-right" alt="product" src={env.url + '/products/'+this.state.product.image} />
                 </div>
                 <div className="product-left">
                     <h3 className="product-page-title">{this.state.product.name} {this.state.product.model}</h3>
@@ -105,7 +105,7 @@ class Product extends React.Component {
                 {this.randomProducts(this.state.products).map((product, index)=> {
                     return <Link className="random-link" key={index} to={`/category/${product.categoryId}/product/${product._id}`}>
                         <div className="random-pic-container">
-                        <img className="random-pic" alt="product" src={'http://localhost:4000/products/'+product.image} />
+                        <img className="random-pic" alt="product" src={env.url + '/products/'+product.image} />
                         <div class="random-overlay">
                              <div class="random-text"><FontAwesomeIcon icon={faSearchPlus}/></div>
                         </div>

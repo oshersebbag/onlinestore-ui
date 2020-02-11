@@ -7,7 +7,7 @@ import  { Link }  from "react-router-dom";
 import './Cart.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimesCircle, faGlobeAmericas, faCheck } from '@fortawesome/free-solid-svg-icons';
-
+import env from "../environment";
 
 
 
@@ -92,7 +92,7 @@ class Cart extends React.Component {
               <tbody>
                 {this.state.cartItems.map((item, i) => {
                   return <tr key={i}>
-                    <td><img className="cart-product-image" alt="product" src={'http://localhost:4000/products/'+item.image} /></td>
+                    <td><img className="cart-product-image" alt="product" src={env.url + '/products/'+item.image} /></td>
                     
                     <td><Link className="cart-link"to={`/category/${item.categoryId}/product/${item._id}`}>{item.name}</Link></td>
                     <td>{item.price.toFixed(1)} </td>

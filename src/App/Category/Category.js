@@ -3,6 +3,7 @@ import './Category.scss';
 import ProductService from '../../services/product.service';
 import CategoryService from '../../services/category.service';
 import{Link} from "react-router-dom";
+import env from "../environment";
 
 
 class Category extends React.Component {
@@ -58,7 +59,7 @@ class Category extends React.Component {
             <div className="category-container">
                 {this.state.products.map((product, index)=> {
                     return <Link className="category-poduct-container" key={index} to={`/category/${this.props.match.params.id}/product/${product._id}`}>
-                   <div className="category-product-img-container"><div className="item"> <img className="category-product-img" alt="product" src={'http://localhost:4000/products/'+product.image} /> </div> </div>
+                   <div className="category-product-img-container"><div className="item"> <img className="category-product-img" alt="product" src={env.url + '/products/'+product.image} /> </div> </div>
                     <div className="category-product-title">
                         <div className="category-product-title-name">{product.name}</div>
                         <div className="category-product-title-price">for {product.price} <sub>(NIS)</sub> only</div>

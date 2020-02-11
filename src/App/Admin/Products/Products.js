@@ -2,6 +2,7 @@ import React from 'react';
 import "./Products.scss";
 import ProductService from "../../../services/product.service";
 import {Link} from "react-router-dom";
+import env from "../../environment";
 
 
 class Products extends React.Component {
@@ -53,7 +54,7 @@ class Products extends React.Component {
                     <tbody>
                         {this.state.products.map((product, index) => {
                             return <tr key={index} >
-                                <td><img className="product-image" alt="product"  src={'http://localhost:4000/products/'+product.image} /></td>
+                                <td><img className="product-image" alt="product"  src={env.url + '/products/'+product.image} /></td>
                                 <td>{product._id.substring(product._id.length -6)}</td>
                                 <td>{product.name}</td>
                                 <td>{product.brand}</td>
