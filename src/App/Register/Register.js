@@ -77,7 +77,7 @@ class Register extends React.Component {
                     <ErrorMessage className="alert alert-success" name="rePassword" component="div" />
 					<div className="checkbox">
 						<label>
-							<Field type="checkbox" name="consent" className="checkmark" /> I accept the Terms of Use & Privacy Policy.
+							<Field type="checkbox" name="consent" className="checkmark" /> I really want to get your newsletter with great deals and offers!
 						</label>
 					</div>
                     <ErrorMessage className="alert alert-success" name="consent" component="div" />
