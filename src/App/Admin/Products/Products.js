@@ -54,7 +54,7 @@ class Products extends React.Component {
                     <tbody>
                         {this.state.products.map((product, index) => {
                             return <tr key={index} >
-                                <td><img className="product-image" alt="product"  src={env.url + '/products/'+product.image} /></td>
+                                <td><img className="product-image" alt="product"  src={product.image.includes('http') ? product.image : env.url + '/products/'+product.image} /></td>
                                 <td>{product._id.substring(product._id.length -6)}</td>
                                 <td>{product.name}</td>
                                 <td>{product.brand}</td>

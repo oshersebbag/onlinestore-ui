@@ -52,7 +52,7 @@ class Categories extends React.Component {
                     <tbody>
                         {this.state.categories.map((category, index) => {
                             return <tr key={index} >
-                                <td><img className="category-image" alt="category" src={env.url + '/categories/'+category.image} /></td>
+                                <td><img className="category-image" alt="category" src={category.image.includes('http') ? category.image :env.url + '/categories/'+category.image} /></td>
                                 <td>{category.name}</td>
                                 <td><Link className="btn btn-primary" to={`/admin/categories/edit/${category.id}`}>Edit</Link>
                                 &nbsp;&nbsp;

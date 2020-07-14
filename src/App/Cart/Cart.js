@@ -92,7 +92,7 @@ class Cart extends React.Component {
               <tbody>
                 {this.state.cartItems.map((item, i) => {
                   return <tr key={i}>
-                    <td><img className="cart-product-image" alt="product" src={env.url + '/products/'+item.image} /></td>
+                    <td><img className="cart-product-image" alt="product" src={item.image.includes('http') ? item.image :env.url + '/products/'+item.image} /></td>
                     
                     <td><Link className="cart-link"to={`/category/${item.categoryId}/product/${item._id}`}>{item.name}</Link></td>
                     <td>{item.price.toFixed(1)} </td>
