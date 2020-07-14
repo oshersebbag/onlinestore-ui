@@ -76,7 +76,7 @@ class Product extends React.Component {
             <div className="product-page-container">
                 <div className="product-top">
                 <div className="product-right">
-                <img className="product-right" alt="product" src={this.state.product.image.includes('http') ? this.state.product.image :env.url + '/products/'+this.state.product.image} />
+                {/* <img className="product-right" alt="product" src={this.state.product.image.includes('http') ? this.state.product.image : env.url + '/products/'+this.state.product.image} /> */}
                 </div>
                 <div className="product-left">
                     <h3 className="product-page-title">{this.state.product.name} {this.state.product.model}</h3>
