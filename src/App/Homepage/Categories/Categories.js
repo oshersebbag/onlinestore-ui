@@ -25,7 +25,7 @@ class Categories extends React.Component {
                 {this.state.categories.map((category, index) => {
         return <Link className="myCategory " key={index} to={'/category/' + category.id}>
         <div className="categoryTitle"><h3>{category.name}</h3></div>
-        <div className="categoryImage"> <img  alt={category.name} src={env.url + '/categories/'+category.image}/></div>
+        <div className="categoryImage"> <img  alt={category.name} src={category.image.includes('http') ? category.image : env.url + '/categories/'+category.image}/></div>
     </ Link>
 })}
                 </div>
