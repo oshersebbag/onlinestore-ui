@@ -76,10 +76,10 @@ class Product extends React.Component {
             <div className="product-page-container">
                 <div className="product-top">
                 <div className="product-right">
-                {/* <img className="product-right" alt="product" src={this.state.product.image.includes('http') ? this.state.product.image : env.url + '/products/'+this.state.product.image} /> */}
+                <img className="product-right" alt="product" src={this.state.product.image.includes('http') ? this.state.product.image : env.url + '/products/'+this.state.product.image} />
                 </div>
                 <div className="product-left">
-                    <h3 className="product-page-title">{this.state.product.name} {this.state.product.model}</h3>
+                    <h3 className="product-page-title">{this.state.product.name}&nbsp;{this.state.product.model}</h3>
                     <h6 className="product-page-brand">by {this.state.product.brand}</h6>
                     <h5 className="product-page-price"> {(this.state.product.price * 1).toFixed(2)} <sub>(NIS)</sub></h5>
                     <hr/>
