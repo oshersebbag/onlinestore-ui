@@ -62,6 +62,10 @@ class Cart extends React.Component {
 
     }
 
+    endAlert(){
+        alert("this is where we stop :)");
+    }
+
     render(){
         return (
             <div className="cart-container">

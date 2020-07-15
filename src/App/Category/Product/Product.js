@@ -54,7 +54,7 @@ class Product extends React.Component {
 
 
     randomProducts(products){
-        const arr = products.filter(element => element._id != this.state.product._id);
+        const arr = products.filter(element => element._id !== this.state.product._id);
         for(let i = arr.length - 1; i > 0; i--){
             const j = Math.floor(Math.random() * i);
             const temp = arr[i];
@@ -122,8 +122,8 @@ class Product extends React.Component {
                     return <Link className="random-link" key={index} to={`/category/${product.categoryId}/product/${product._id}`}>
                         <div className="random-pic-container">
                         <img className="random-pic" alt="product" src={product.image.includes('http') ? product.image : env.url + '/products/'+product.image} />
-                        <div class="random-overlay">
-                             <div class="random-text"><FontAwesomeIcon icon={faSearchPlus}/></div>
+                        <div className="random-overlay">
+                             <div className="random-text"><FontAwesomeIcon icon={faSearchPlus}/></div>
                         </div>
 
                         </div>
