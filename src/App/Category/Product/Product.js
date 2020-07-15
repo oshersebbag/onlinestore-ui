@@ -87,7 +87,6 @@ class Product extends React.Component {
     
 
     render(){
-        console.log(this.state.product.image);
         return (
             <div className="product-page-container">
                 <div className="product-top">
